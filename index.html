@@ -26,7 +26,7 @@
 	var namelist_m;
 	document.getElementById('newsbar').src = "news/news.txt"
 	function getNames(){
-		 $.get('text/names_1_male.txt', function(data){
+		 $.get('text/names_eng_male.txt', function(data){
             namelist_m = data.split('\n');
             console.log(namelist_m);
         });
