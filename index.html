@@ -30,8 +30,8 @@
 		namelist_f = data.split('\n');
 		console.log(namelist_f);
 	}
-	$.get('text/names_eng_male.txt', namelist_m_callback(data));
-	$.get('text/names_eng_female.txt', namelist_f_callback(data));
+	$.get('text/names_eng_male.txt', namelist_m_callback);
+	$.get('text/names_eng_female.txt', namelist_f_callback);
 	var MYSTERY = MYSTERY || {};
 	MYSTERY.common = {
 		killer: "CHAR",
