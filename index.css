@@ -1,0 +1,25 @@
+html, body {
+	width: 100%;
+	height: 130%;
+    overflow-x: hidden;
+	color: white;
+	background-color: DarkOliveGreen;
+	background: url(images/backgrounds/victorian2_green.jpg) fixed center repeat;
+}
+#title {
+    font-size: 300%;
+	color: tan;
+}
+#newstitle{
+	position: fixed;
+	top: 140px;
+	left: 40px;
+	color: tan;
+}
+#newsbar {
+	position: fixed;
+	top: 200px;
+	left: 20px;
+	border: 4px solid black;
+	background-color: DarkOliveGreen;
+}

@@ -1,0 +1,37 @@
+<html lang="en" data-ember-extension="1"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="index.css"/>
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script src=http://cdn.pubnub.com/pubnub.min.js></script>
+    <title>Murder in Loxmoore</title>
+	<head><div id=title align=center>Murder in Loxmoore</div></head>
+	
+	<body>
+	<p id="newstitle">Welcome back!</p>
+	<iframe id="newsbar" src="news/news.txt" width=140 height=500></iframe>
+	
+	
+	<script>
+	var suspects;
+	var killer;
+	var setting;
+	var weapon;
+	var motive;
+	var username;
+	var namelists;
+	var namelist_m;
+	document.getElementById('newsbar').src = "news/news.txt"
+	function getNames(){
+		 $.get('text/names_1_male.txt', function(data){
+            namelist_m = data.split('\n');
+            console.log(namelist_m);
+        });
+	}
+	getNames();
+	</script>
+</body>
+</html>
