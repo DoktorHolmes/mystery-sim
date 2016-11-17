@@ -41,11 +41,11 @@
 		var namelist_f;
 		$.get('text/names_eng_male.txt', function(data){
 				namelist_m = data.split('\n');
-				console.log(this.namelist_m);
+				console.log(namelist_m);
 		});
 		$.get('text/names_eng_female.txt', function(data){
 				namelist_f = data.split('\n');
-				console.log(this.namelist_m);
+				console.log(namelist_m);
 		});
 		this.generateChar = function(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
