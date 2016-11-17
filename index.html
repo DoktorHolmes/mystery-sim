@@ -39,17 +39,14 @@
 		this.relationships = [];
 		this.namelist_m = ["Denholm", "Quinton"];
 		this.namelist_f = ["Sarah", "Deborah"];
-		this.getNames = function(){
-			$.get('text/names_eng_male.txt', function(data){
+		$.get('text/names_eng_male.txt', function(data){
 				this.namelist_m = data.split('\n');
 				console.log(namelist_m);
-			});
-			$.get('text/names_eng_female.txt', function(data){
+		});
+		$.get('text/names_eng_female.txt', function(data){
 				this.namelist_f = data.split('\n');
 				console.log(namelist_m);
-			});
-		}
-		this.getNames();
+		});
 		this.generateChar = function(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
 			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
