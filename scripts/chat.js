@@ -1,7 +1,7 @@
 function(){
 var pubnub = PUBNUB.init({
-    publish_key: 'pub-c-123f7ee1-d4d4-4247-96b9-409dbbf5a9c2',
-    subscribe_key: 'sub-c-fb1b66dc-027f-11e6-8180-0619f8945a4f',
+    publish_key: '',
+    subscribe_key: '',
     error: function (error) {
         console.log('Error:', error);
     }
