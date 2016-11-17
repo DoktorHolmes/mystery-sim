@@ -20,6 +20,18 @@
 	var gendersList = ["male", "female"];
 	var relationList = ["friend", "sibling", "coworker", "enemy"];
 	var flavorList = ["noble", "uneducated", "meek", "boisterous", "hotheaded"];
+	var namelist_m;
+	var namelist_f;
+	function namelist_m_callback(data){
+		namelist_m = data.split('\n');
+		console.log(namelist_m);
+	}
+	function namelist_f_callback(data){
+		namelist_f = data.split('\n');
+		console.log(namelist_f);
+	}
+	$.get('text/names_eng_male.txt', namelist_m_callback(data));
+	$.get('text/names_eng_female.txt', namelist_f_callback(data));
 	var MYSTERY = MYSTERY || {};
 	MYSTERY.common = {
 		killer: "CHAR",
@@ -37,18 +49,6 @@
 		this.id = 0;
 		this.flavor = "";
 		this.relationships = [];
-		var namelist_m;
-		var namelist_f;
-		function namelist_m_callback(data){
-			namelist_m = data.split('\n');
-			console.log(namelist_m);
-		}
-		function namelist_f_callback(data){
-			namelist_f = data.split('\n');
-			console.log(namelist_f);
-		}
-		$.get('text/names_eng_male.txt', namelist_m_callback(data));
-		$.get('text/names_eng_female.txt', namelist_f_callback(data));
 		this.generateChar = function(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
 			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
