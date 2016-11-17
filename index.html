@@ -30,44 +30,54 @@
 	};
 	var username;
 	var namelists;
-	var namelist_m;
-	var namelist_f;
-	function getNames(){
-		 $.get('text/names_eng_male.txt', function(data){
-            namelist_m = data.split('\n');
-            console.log(namelist_m);
-        });
-		 $.get('text/names_eng_female.txt', function(data){
-            namelist_f = data.split('\n');
-            console.log(namelist_m);
-        });
-	}
-	getNames();
 	var Character = function (){
+
 		this.gender = "GENDER";
 		this.name = "NAME";
 		this.id = 0;
 		this.flavor = "";
 		this.relationships = [];
+		this.namelist_m = ["Denholm", "Quinton"];
+		this.namelist_f = ["Sarah", "Deborah"];
+		this.getNames = function(){
+			$.get('text/names_eng_male.txt', function(data){
+				this.namelist_m = data.split('\n');
+				console.log(namelist_m);
+			});
+			$.get('text/names_eng_female.txt', function(data){
+				this.namelist_f = data.split('\n');
+				console.log(namelist_m);
+			});
+		}
+		this.getNames();
 		this.generateChar = function(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
 			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
 			if(this.gender == "male"){
-				this.name = namelist_m[Math.floor(Math.random() * namelist_m.length)];
+				this.name = this.namelist_m[Math.floor(Math.random() * this.namelist_m.length)];
 				
 			}
 			else if (this.gender == "female"){
-				this.name = namelist_f[Math.floor(Math.random() * namelist_f.length)];
+				this.name = this.namelist_f[Math.floor(Math.random() * this.namelist_f.length)];
 			}
 			else{
 				this.name = "TRIGGERED"; // ;)
 			}
+			MYSTERY.common.suspects.push(this);
+			
+			this.id = MYSTERY.common.suspects.length + 1;
+			console.log("Name:  " + this.name + "; Gender:  " + this.gender);
+			console.log(this.id.toString());
+		}
+		this.generateRelations = function(){
 			for (var i = 0, len = MYSTERY.common.suspects.length; i < len; i++){
-				this.id = i + 1;
-				this.relationship[i] = relationList[Math.floor(Math.random() * relationlist.length)];
-			}
-			console.log(name);
-			console.log(id.toString());
+					
+					this.relationships.push({
+						target: MYSTERY.common.suspects[i].name,
+						value: relationList[Math.floor(Math.random() * relationList.length)]
+					})
+				}
+			console.log(this.relationships);
 		}
 		
 		
@@ -86,6 +96,11 @@
 		Suspect2.generateChar();
 		Suspect3.generateChar();
 		Victim.generateChar();
+		Client.generateRelations();
+		Suspect1.generateRelations();
+		Suspect2.generateRelations();
+		Suspect3.generateRelations();
+		Victim.generateRelations();
 	}
 	initMystery();
 	</script>
