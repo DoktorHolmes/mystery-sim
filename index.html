@@ -37,8 +37,6 @@
 		this.id = 0;
 		this.flavor = "";
 		this.relationships = [];
-		this.namelist_m = ["Denholm", "Quinton"];
-		this.namelist_f = ["Sarah", "Deborah"];
 		$.get('text/names_eng_male.txt', function(data){
 				this.namelist_m = data.split('\n');
 				console.log(this.namelist_m);
