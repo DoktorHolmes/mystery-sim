@@ -16,22 +16,78 @@
 	
 	
 	<script>
-	var suspects;
-	var killer;
-	var setting;
-	var weapon;
-	var motive;
+	//Main Game Script
+	var gendersList = ["male", "female"];
+	var relationList = ["friend", "sibling", "coworker", "enemy"];
+	var flavorList = ["noble", "uneducated", "meek", "boisterous", "hotheaded"];
+	var MYSTERY = MYSTERY || {};
+	MYSTERY.common = {
+		killer: "CHAR",
+		suspects: [],
+		setting: "SETTING",
+		weapon: "WEAPON",
+		motive: "MOTIVE"
+	};
 	var username;
 	var namelists;
 	var namelist_m;
-	document.getElementById('newsbar').src = "news/news.txt"
+	var namelist_f;
 	function getNames(){
 		 $.get('text/names_eng_male.txt', function(data){
             namelist_m = data.split('\n');
             console.log(namelist_m);
         });
+		 $.get('text/names_eng_female.txt', function(data){
+            namelist_f = data.split('\n');
+            console.log(namelist_m);
+        });
 	}
 	getNames();
+	var Character = function (){
+		this.gender = "GENDER";
+		this.name = "NAME";
+		this.id = 0;
+		this.flavor = "";
+		this.relationships = [];
+		this.generateChar = function(){
+			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
+			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
+			if(this.gender == "male"){
+				this.name = namelist_m[Math.floor(Math.random() * namelist_m.length)];
+				
+			}
+			else if (this.gender == "female"){
+				this.name = namelist_f[Math.floor(Math.random() * namelist_f.length)];
+			}
+			else{
+				this.name = "TRIGGERED"; // ;)
+			}
+			for (var i = 0, len = MYSTERY.common.suspects.length; i < len; i++){
+				this.id = i + 1;
+				this.relationship[i] = relationList[Math.floor(Math.random() * relationlist.length)];
+			}
+			console.log(name);
+			console.log(id.toString());
+		}
+		
+		
+	};
+	
+	document.getElementById('newsbar').src = "news/news.txt"
+	
+	function initMystery(){
+		var Client = new Character();
+		var Victim = new Character();
+		var Suspect1 = new Character();
+		var Suspect2 = new Character();
+		var Suspect3 = new Character();
+		Client.generateChar();
+		Suspect1.generateChar();
+		Suspect2.generateChar();
+		Suspect3.generateChar();
+		Victim.generateChar();
+	}
+	initMystery();
 	</script>
 </body>
 </html>
