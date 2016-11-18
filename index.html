@@ -71,20 +71,22 @@
 			console.log(this.id.toString());
 		}
 		this.generate = function(){
-		function namelist_m_callback(data){
-			namelist_m = data.split('\n');
-			console.log(namelist_m);
-			generateNames();
-		}
-		function namelist_f_callback(data){
-			namelist_f = data.split('\n');
-			console.log(namelist_f);
-			generateNames();
-		}
+			function namelist_m_callback(data){
+				namelist_m = data.split('\n');
+				console.log(namelist_m);
+				generateNames();
+				this.generateChar();
+				this.generateRelations();
+			}
+			function namelist_f_callback(data){
+				namelist_f = data.split('\n');
+				console.log(namelist_f);
+				generateNames();
+				this.generateChar();
+				this.generateRelations();
+			}
 		$.get('text/names_eng_male.txt', namelist_m_callback);
 		$.get('text/names_eng_female.txt', namelist_f_callback);
-		this.generateChar();
-		this.generateRelations();
 		}
 		
 	};
