@@ -75,15 +75,15 @@
 				namelist_m = data.split('\n');
 				console.log(namelist_m);
 				generateNames();
-				this.generateChar();
-				this.generateRelations();
+				generateChar();
+				generateRelations();
 			}
 			function namelist_f_callback(data){
 				namelist_f = data.split('\n');
 				console.log(namelist_f);
 				generateNames();
-				this.generateChar();
-				this.generateRelations();
+				generateChar();
+				generateRelations();
 			}
 		$.get('text/names_eng_male.txt', namelist_m_callback);
 		$.get('text/names_eng_female.txt', namelist_f_callback);
