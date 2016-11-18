@@ -39,18 +39,6 @@
 		this.id = 0;
 		this.flavor = "";
 		this.relationships = [];
-		function namelist_m_callback(data){
-			namelist_m = data.split('\n');
-			console.log(namelist_m);
-			this.generateNames();
-		}
-		function namelist_f_callback(data){
-			namelist_f = data.split('\n');
-			console.log(namelist_f);
-			this.generateNames();
-		}
-		$.get('text/names_eng_male.txt', namelist_m_callback);
-		$.get('text/names_eng_female.txt', namelist_f_callback);
 		this.generateNames = function(){
 			if(this.gender == "male"){
 				this.name = namelist_m[Math.floor(Math.random() * namelist_m.length)];
@@ -63,6 +51,18 @@
 				this.name = "TRIGGERED"; // ;)
 			}
 		}
+		function namelist_m_callback(data){
+			namelist_m = data.split('\n');
+			console.log(namelist_m);
+			this.generateNames();
+		}
+		function namelist_f_callback(data){
+			namelist_f = data.split('\n');
+			console.log(namelist_f);
+			this.generateNames();
+		}
+		$.get('text/names_eng_male.txt', namelist_m_callback);
+		$.get('text/names_eng_female.txt', namelist_f_callback);
 		this.generateChar = function(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
 			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
