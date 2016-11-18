@@ -51,15 +51,6 @@
 				this.name = "TRIGGERED"; // ;)
 			}
 		}
-		this.generateChar = function(){
-			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
-			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
-			MYSTERY.common.suspects.push(this);
-			
-			this.id = MYSTERY.common.suspects.length + 1;
-			console.log("Name:  " + this.name + "; Gender:  " + this.gender);
-			console.log(this.id.toString());
-		}
 		this.generateRelations = function(){
 			for (var i = 0, len = MYSTERY.common.suspects.length; i < len; i++){
 					
@@ -69,6 +60,15 @@
 					})
 				}
 			console.log(this.relationships);
+		}
+		this.generateChar = function{
+			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
+			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
+			MYSTERY.common.suspects.push(this);
+			
+			this.id = MYSTERY.common.suspects.length + 1;
+			console.log("Name:  " + this.name + "; Gender:  " + this.gender);
+			console.log(this.id.toString());
 		}
 		this.generate = function(){
 		function namelist_m_callback(data){
