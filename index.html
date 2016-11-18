@@ -38,7 +38,7 @@
 		this.name = "NAME";
 		this.id = 0;
 		this.flavor = "";
-		this.relationships = [];
+		var relationships = [];
 		function generateNames(){
 			if(this.gender == "male"){
 				this.name = namelist_m[Math.floor(Math.random() * namelist_m.length)];
@@ -54,12 +54,12 @@
 		function generateRelations(){
 			for (var i = 0, len = MYSTERY.common.suspects.length; i < len; i++){
 					
-					this.relationships.push({
+					relationships.push({
 						target: MYSTERY.common.suspects[i].name,
 						value: relationList[Math.floor(Math.random() * relationList.length)]
 					})
 				}
-			console.log(this.relationships);
+			console.log(relationships);
 		}
 		function generateChar(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
@@ -81,8 +81,8 @@
 			function namelist_f_callback(data){
 				namelist_f = data.split('\n');
 				console.log(namelist_f);
-				generateNames();
 				generateChar();
+				generateNames();
 				generateRelations();
 			}
 		$.get('text/names_eng_male.txt', namelist_m_callback);
