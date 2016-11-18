@@ -51,18 +51,6 @@
 				this.name = "TRIGGERED"; // ;)
 			}
 		}
-		function namelist_m_callback(data){
-			namelist_m = data.split('\n');
-			console.log(namelist_m);
-			generateNames();
-		}
-		function namelist_f_callback(data){
-			namelist_f = data.split('\n');
-			console.log(namelist_f);
-			generateNames();
-		}
-		$.get('text/names_eng_male.txt', namelist_m_callback);
-		$.get('text/names_eng_female.txt', namelist_f_callback);
 		this.generateChar = function(){
 			this.gender = gendersList[Math.floor(Math.random() * gendersList.length)];
 			this.flavor = flavorList[Math.floor(Math.random() * flavorList.length)];
@@ -82,7 +70,22 @@
 				}
 			console.log(this.relationships);
 		}
-		
+		this.generate = function(){
+		function namelist_m_callback(data){
+			namelist_m = data.split('\n');
+			console.log(namelist_m);
+			generateNames();
+		}
+		function namelist_f_callback(data){
+			namelist_f = data.split('\n');
+			console.log(namelist_f);
+			generateNames();
+		}
+		$.get('text/names_eng_male.txt', namelist_m_callback);
+		$.get('text/names_eng_female.txt', namelist_f_callback);
+		this.generateChar();
+		this.generateRelations();
+		}
 		
 	};
 	
@@ -94,16 +97,11 @@
 		var Suspect1 = new Character();
 		var Suspect2 = new Character();
 		var Suspect3 = new Character();
-		Client.generateChar();
-		Suspect1.generateChar();
-		Suspect2.generateChar();
-		Suspect3.generateChar();
-		Victim.generateChar();
-		Client.generateRelations();
-		Suspect1.generateRelations();
-		Suspect2.generateRelations();
-		Suspect3.generateRelations();
-		Victim.generateRelations();
+		Client.generate();
+		Suspect1.generate();
+		Suspect2.generate();
+		Suspect3.generate();
+		Victim.generate();
 	}
 	initMystery();
 	</script>
